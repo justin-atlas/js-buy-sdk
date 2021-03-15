@@ -1,6 +1,7 @@
 import Resource from './resource';
 import defaultResolver from './default-resolver';
 import handleCheckoutMutation from './handle-checkout-mutation';
+import handleAddDiscountMutation from './handle-add-discount-mutation';
 
 // GraphQL
 import checkoutNodeQuery from './graphql/checkoutNodeQuery.graphql';
@@ -162,7 +163,7 @@ class CheckoutResource extends Resource {
   addDiscount(checkoutId, discountCode) {
     return this.graphQLClient
       .send(checkoutDiscountCodeApplyV2Mutation, {checkoutId, discountCode})
-      .then(handleCheckoutMutation('checkoutDiscountCodeApplyV2', this.graphQLClient));
+      .then(handleAddDiscountMutation('checkoutDiscountCodeApplyV2', this.graphQLClient));
   }
 
   /**

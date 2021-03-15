@@ -1,16 +1,10 @@
-export default function handleCheckoutMutation(mutationRootKey, client) {
+export default function handleAddDiscountMutation(mutationRootKey, client) {
   return function({data = {}, errors, model = {}}) {
     const rootData = data[mutationRootKey];
     const rootModel = model[mutationRootKey];
 
     if (rootData && rootData.checkout) {
-      return client.fetchAllPages(rootModel.checkout.lineItems, {pageSize: 250}).then((lineItems) => {
-        rootModel.checkout.attrs.lineItems = lineItems;
-        rootModel.checkout.errors = errors;
-        rootModel.checkout.userErrors = rootModel.userErrors;
-
-        return rootModel.checkout;
-      });
+      return rootModel.checkout;
     }
 
     if (errors && errors.length) {
