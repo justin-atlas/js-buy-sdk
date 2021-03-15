@@ -4,13 +4,14 @@ export default function handleCheckoutMutation(mutationRootKey, client) {
     const rootModel = model[mutationRootKey];
 
     if (rootData && rootData.checkout) {
-      return client.fetchAllPages(rootModel.checkout.lineItems, {pageSize: 250}).then((lineItems) => {
-        rootModel.checkout.attrs.lineItems = lineItems;
-        rootModel.checkout.errors = errors;
-        rootModel.checkout.userErrors = rootModel.userErrors;
+      // return client.fetchAllPages(rootModel.checkout.lineItems, {pageSize: 250}).then((lineItems) => {
+      //   rootModel.checkout.attrs.lineItems = lineItems;
+      //   rootModel.checkout.errors = errors;
+      //   rootModel.checkout.userErrors = rootModel.userErrors;
 
-        return rootModel.checkout;
-      });
+      //   return rootModel.checkout;
+      // });
+      return rootModel.checkout;
     }
 
     if (errors && errors.length) {
